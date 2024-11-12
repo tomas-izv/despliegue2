@@ -11,13 +11,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host:8080
   config.vm.network "private_network", ip: "192.168.57.103"
 
-  config.vm.provision "shell", inline: <<-SHELL
-
-  apt-get update
-
-  sudo apt update
-  sudo apt install nginx
-
-  SHELL
+  config.vm.provision "shell", path: "provision.sh"
 
 end
