@@ -13,4 +13,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "provision.sh"
 
+#   config.vm.provision "shell", inline: <<-SHELL
+#   sudo apt update 
+#       sudo apt install nginx
+#       sudo apt install git
+#   SHELL
+
 end
