@@ -22,21 +22,19 @@ sudo chmod -R 755 /var/www/tomas_web
 #Para que Nginx presente el contenido de nuestra web, es necesario crear un bloque de servidor con las directivas correctas. En vez de modificar el archivo de configuración predeterminado directamente, crearemos uno nuevo.
 #sudo nano /etc/nginx/sites-available/trm
 
-#Con el siguiente contenido:
-#/etc/nginx/sites-available/trm
-#########
-#server {
-#  listen 80;
-#  listen [::]:80;
-#  root /ruta/absoluta/archivo/index;
-#  index index.html index.htm index.nginx-debian.html;
-#  server_name nombre_web;
-#  location / {
-#  try_files $uri $uri/ =404;
-#  }
-#}
-
-cp /vagrant/conf/trm /etc/nginx/sites-available/trm
+#Creación del archivo y del enlace simbólico
+     sudo bash -c 'cat > /etc/nginx/sites-available/tomasweb <<EOF
+         server {
+             listen 80;
+             listen [::]:80;
+             root /var/www/tomasweb/html;
+             index index.html index.htm index.nginx-debian.html;
+             server_name tomasweb.com www.tomasweb.com;
+             location / {
+                 try_files $uri $uri/ =404;
+             }
+         }
+    EOF'
 
 #Y crearemos un archivo simbólico entre este archivo y el de sitios que están habilitados, para que se dé de alta automáticamente.
 sudo ln -s /etc/nginx/sites-available/trm /etc/nginx/sites-enabled/
@@ -56,21 +54,19 @@ sudo mkdir -p /var/www/tomas2web/html
 #Para que Nginx presente el contenido de nuestra web, es necesario crear un bloque de servidor con las directivas correctas. En vez de modificar el archivo de configuración predeterminado directamente, crearemos uno nuevo.
 #sudo nano /etc/nginx/sites-available/trm
 
-#Con el siguiente contenido:
-#/etc/nginx/sites-available/trm
-#########
-#server {
-#  listen 80;
-#  listen [::]:80;
-#  root /ruta/absoluta/archivo/index;
-#  index index.html index.htm index.nginx-debian.html;
-#  server_name nombre_web;
-#  location / {
-#  try_files $uri $uri/ =404;
-#  }
-#}
-
-cp /vagrant/conf/trm /etc/nginx/sites-available/trm2
+#Creación del archivo y del enlace simbólico
+     sudo bash -c 'cat > /etc/nginx/sites-available/tomas2web <<EOF
+         server {
+             listen 80;
+             listen [::]:80;
+             root /var/www/tomas2web/html;
+             index index.html index.htm index.nginx-debian.html;
+             server_name tomas2web.com www.tomas2web.com;
+             location / {
+                 try_files $uri $uri/ =404;
+             }
+         }
+    EOF'
 
  #Enlace simbólico
     sudo ln -sf /etc/nginx/sites-available/trm2 /etc/nginx/sites-enabled/
