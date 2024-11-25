@@ -21,7 +21,8 @@
 
 #Crea la carpeta para la página web
     sudo mkdir -p /var/www/tomas_web/html
-    sudo git clone https://github.com/cloudacademy/static-website-example.git /var/www/tomas_web/html
+    cd /var/www/tomas_web/html/
+    sudo git clone https://github.com/cloudacademy/static-website-example.git 
 
 #Administrar permisos
      sudo chown -R www-data:www-data /var/www/tomas_web/html
@@ -45,25 +46,10 @@
      sudo chown -R www-data:www-data /var/www/tomas2_web/html/
      sudo chmod -R 775 /var/www/tomas2_web/html/
 
-#Creación del archivo y del enlace simbólico
-    # sudo bash -c 'cat > /etc/nginx/sites-available/trm2 <<EOF
-    #     server {
-    #         listen 80;
-    #         listen [::]:80;
-    #         root /var/www/tomas2_web/html;
-    #         index index.html index.htm index.nginx-debian.html;
-    #         server_name trm2.com www.trm2.com;
-    #         location / {
-    #             try_files $uri $uri/ =404;
-    #         }
-    #     }
-    # EOF'
-
     cp /vagrant/conf/trm2 /etc/nginx/sites-available/trm2
 
  #Enlace simbólico
     sudo ln -sf /etc/nginx/sites-available/trm2 /etc/nginx/sites-enabled/
-
 
 #nos aseguramos que no va mostrar la página por defecto de Nginx
     sudo unlink /etc/nginx/sites-enabled/default
@@ -86,7 +72,10 @@
 
     #Permisos
         sudo chown -R tomas_user:tomas_user /home/tomas_user/ftp
-        sudo chown -R www-data:tomas_user /var/www/
+        sudo chown -R tomas_user:tomas_user /var/www/tomas2_web/html
+
+        sudo chown -R www-data:www-data /var/www/tomas2_web/html/
+        sudo chmod -R 775 /var/www/tomas2_web/html/
 
 
 #Creación de los certificados de seguridad
