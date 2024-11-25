@@ -1,0 +1,10 @@
+server {
+	listen 80;
+	listen [::]:80;
+	root /var/www/tomas2_web/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name trm2.com www.trm2.com;
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}

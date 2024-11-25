@@ -18,8 +18,9 @@ seguridad y fallos en el funcionamiento del sitio.
 
 # Captura de repositorio
 
-<img src="img\img1.jpg" alt="web1"/>
+<img src="img\img1.png" alt="web1"/>
 
 # Captura de Filezilla
 
-<img src="img\img2.jpg" alt="web2"/>
+<img src="img\img2.jpg" alt="web2.1"/>
+<img src="img\img3.png" alt="web2.2"/>
